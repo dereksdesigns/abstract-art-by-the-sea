@@ -364,4 +364,3 @@ h1, h2 {
   .gallery-grid { grid-template-columns: 1fr; }
   .shop-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
   .blob-a, .blob-b, .blob-c { opacity: 0.25; }
-}
