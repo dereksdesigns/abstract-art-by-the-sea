@@ -16,50 +16,6 @@
   --max: 1180px;
 }
 
-.meet-artist {
-  padding: 6rem 0;
-}
-
-.artist-inner {
-  display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: 3rem;
-  align-items: center;
-}
-
-.artist-figure {
-  border-radius: 4px;
-  overflow: hidden;
-}
-
-.artist-photo {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 4px;
-  object-fit: cover;
-}
-
-.artist-copy h2 {
-  margin-top: 0.25rem;
-  margin-bottom: 1rem;
-}
-
-.artist-copy p {
-  margin-bottom: 1.25rem;
-}
-
-@media (max-width: 768px) {
-  .artist-inner {
-    grid-template-columns: 1fr;
-  }
-
-  .artist-figure {
-    order: -1;
-  }
-}
-
-
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 
