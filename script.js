@@ -29,3 +29,4 @@ function updateTideline() {
 
 window.addEventListener('scroll', updateTideline, { passive: true });
 updateTideline();
+
