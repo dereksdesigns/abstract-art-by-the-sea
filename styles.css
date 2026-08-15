@@ -248,6 +248,15 @@ h1, h2 {
   background:
     linear-gradient(160deg, var(--horizon) 0%, var(--sea) 55%, var(--paper-2) 100%);
   border-radius: 2px;
+  overflow: hidden;
+}
+
+.figure-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 2px;
 }
 
 .about-copy h2 { font-size: 38px; margin-bottom: 20px; }
@@ -364,3 +373,4 @@ h1, h2 {
   .gallery-grid { grid-template-columns: 1fr; }
   .shop-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
   .blob-a, .blob-b, .blob-c { opacity: 0.25; }
+}
