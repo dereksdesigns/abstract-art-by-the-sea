@@ -276,6 +276,26 @@ h1, h2 {
   font-style: italic;
   font-family: var(--display);
 }
+/* About: portrait */
+.about-figure {
+  max-width: 360px;
+  width: 100%;
+  margin: 0;
+  /* the .about-inner grid will place the figure in the left column */
+}
+.about-photo {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  object-fit: cover;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+/* small screens — image sits above text (grid already collapses) */
+@media (max-width: 860px) {
+  .about-figure { max-width: 420px; margin: 0 auto; }
+}
 /* ---------- About ---------- */
 .about { padding: 110px 0; border-top: 1px solid var(--line); }
 
