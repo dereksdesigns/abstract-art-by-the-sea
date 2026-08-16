@@ -356,6 +356,65 @@ h1, h2 {
   z-index: 2;
 }
 
+/* ---------- Process ---------- */
+.process { padding: 100px 0; border-top: 1px solid var(--line); }
+
+.process-inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+}
+
+.process-copy h2 { font-size: 38px; margin-bottom: 20px; }
+.process-copy p { color: var(--ink-soft); font-size: 16.5px; max-width: 620px; margin: 0; }
+
+.process-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.process-shot {
+  aspect-ratio: 4 / 5;
+  border-radius: 2px;
+  background-size: cover;
+}
+
+.process-shot-1 { background: linear-gradient(150deg, var(--sea) 0%, var(--paper-2) 60%, var(--horizon) 100%); }
+.process-shot-2 { background: linear-gradient(190deg, var(--clay) 0%, var(--paper-2) 55%, var(--sea) 110%); }
+.process-shot-3 { background: linear-gradient(160deg, var(--horizon) 0%, var(--sea-deep) 60%, var(--paper-2) 120%); }
+
+/* ---------- Reviews ---------- */
+.reviews { padding: 100px 0; border-top: 1px solid var(--line); }
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.review {
+  margin: 0;
+  padding: 28px;
+  background: var(--paper-2);
+  border-radius: 2px;
+}
+
+.review p {
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 17px;
+  line-height: 1.5;
+  color: var(--ink);
+  margin: 0 0 16px;
+}
+
+.review cite {
+  font-style: normal;
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+
 /* ---------- Contact ---------- */
 .contact {
   padding: 120px 0;
@@ -386,6 +445,8 @@ h1, h2 {
 @media (max-width: 860px) {
   .about-inner { grid-template-columns: 1fr; gap: 40px; }
   .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+  .process-strip { grid-template-columns: repeat(2, 1fr); }
+  .reviews-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 640px) {
@@ -396,7 +457,8 @@ h1, h2 {
   .nav-toggle { display: flex; }
   .hero { padding: 80px 0 64px; }
   .hero h1 { font-size: 44px; }
-  .about, .gallery, .contact { padding: 64px 0; }
+  .about, .gallery, .process, .reviews, .contact { padding: 64px 0; }
   .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .process-strip { grid-template-columns: 1fr 1fr; gap: 10px; }
   .blob-a, .blob-b, .blob-c { opacity: 0.25; }
 }
