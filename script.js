@@ -1,206 +1,71 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Abstract Art by the Sea</title>
-<meta name="description" content="Original and abstract mixed media pieces, by artist Derek Slavin.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400&family=Work+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
-</head>
-<body>
+// Footer year
+document.getElementById('year').textContent = new Date().getFullYear();
 
-<div class="tideline" aria-hidden="true"></div>
+// Mobile nav toggle
+const toggle = document.querySelector('.nav-toggle');
+const nav = document.querySelector('.site-nav');
 
-<header class="site-header" id="top">
-  <div class="wrap header-inner">
-    <a href="#top" class="wordmark">Derek Slavin</a>
-    <nav class="site-nav">
-      <a href="#about">About</a>
-      <a href="#gallery">Gallery</a>
-      <a href="#process">Process</a>
-      <a href="#reviews">Reviews</a>
-      <a href="#contact">Contact</a>
-    </nav>
-    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-  </div>
-</header>
+toggle.addEventListener('click', () => {
+  const isOpen = nav.classList.toggle('open');
+  toggle.setAttribute('aria-expanded', String(isOpen));
+});
 
-<section class="hero">
-  <div class="hero-art" aria-hidden="true">
-    <div class="blob blob-a"></div>
-    <div class="blob blob-b"></div>
-    <div class="blob blob-c"></div>
-  </div>
-  <div class="wrap hero-inner">
-    <p class="eyebrow">Original paintings &amp; prints</p>
-    <h1>Abstract Art<br>by the Sea</h1>
-    <p class="hero-sub">Studio works by <span class="artist-name">Derek Slavin</span></p>
-    <a href="#gallery" class="btn btn-line">View the gallery</a>
-  </div>
-</section>
+nav.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    nav.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+  });
+});
 
-<section class="about" id="about">
-  <div class="wrap about-inner">
-    <div class="figure-panel">
-      <img src="IMG_5386.png" alt="Derek Slavin in his studio" class="figure-photo">
-    </div>
-    <div class="about-copy">
-      <p class="eyebrow">Meet the artist</p>
-      <h2>Derek Slavin</h2>
-      <p>Hi, I'm Derek, a Scottish-born artist now living in beautiful Newquay, Cornwall. Creativity has been at the heart of my life for as long as I can remember. After careers as a tiler, painter and decorator, I've returned to my lifelong passion for art and now dedicate my time to creating original abstract and coastal-inspired pieces.</p>
-      <p>My work is deeply influenced by the sea, nature, and the textures I discover in the world around me. Having lived and travelled extensively, including years in Gibraltar, Spain, Australia, Key West, and aboard cruise ships, I've experienced the incredible colours, moods, and movement of oceans across the globe. Those memories continue to inspire my paintings today. I love experimenting with texture and mixed media techniques, particularly crackle effects that give each piece depth, character, and individuality. Today, I'm giving everything I've got to creating artwork that brings energy, calm, and connection into people's homes. Every painting tells a story, and I hope you'll find one that speaks to you.</p>
-      <a href="#gallery" class="btn btn-underline">See what's available</a>
-    </div>
-  </div>
-</section>
+// Tideline: fills as the visitor scrolls down the page
+const tideline = document.querySelector('.tideline');
 
-<section class="gallery" id="gallery">
-  <div class="wrap">
-    <div class="section-head">
-      <p class="eyebrow">Originals — £500 each</p>
-      <h2>Gallery</h2>
-    </div>
-    <div class="gallery-grid">
+function updateTideline() {
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+  tideline.style.width = pct + '%';
+}
 
-      <button class="piece" data-title="Untitled 1" data-desc="Mixed media on canvas.">
-        <img src="024e5d10-43ea-46bc-a82e-753fa14b6105.jpeg" alt="Untitled painting 1" class="piece-art">
-      </button>
-      <button class="piece" data-title="Untitled 2" data-desc="Mixed media on canvas.">
-        <img src="17edb553-33fe-4fa9-ad20-fc7cffbd10b3.jpeg" alt="Untitled painting 2" class="piece-art">
-      </button>
-      <button class="piece" data-title="Untitled 3" data-desc="Mixed media on canvas.">
-        <img src="1d3122ea-651f-4cc8-9f87-5d3549bc5809.jpeg" alt="Untitled painting 3" class="piece-art">
-      </button>
-      <button class="piece" data-title="Untitled 4" data-desc="Mixed media on canvas.">
-        <img src="1db54193-a7df-4bfe-b3a3-6f8a92c8f84c.jpeg" alt="Untitled painting 4" class="piece-art">
-      </button>
-      <button class="piece" data-title="Untitled 5" data-desc="Mixed media on canvas.">
-        <img src="246b9438-c63f-4e37-b4b8-4e119ccd5cca.jpeg" alt="Untitled painting 5" class="piece-art">
-      </button>
-      <button class="piece" data-title="Untitled 6" data-desc="Mixed media on canvas.">
-        <img src="25e7e128-ab26-44d0-8584-10160ddc0756.jpeg" alt="Untitled painting 6" class="piece-art">
-      </button>
-      <button class="piece" data-title="Untitled 7" data-desc="Mixed media on canvas.">
-        <img src="28beff91-238f-463d-b281-427220c5479c.jpeg" alt="Untitled painting 7" class="piece-art">
-      </button>
-      <button class="piece" data-title="Untitled 8" data-desc="Mixed media on canvas.">
-        <img src="2db93fc7-60c4-428b-8f97-dfdca7dd2315.jpeg" alt="Untitled painting 8" class="piece-art">
-      </button>
-      <button class="piece" data-title="Untitled 9" data-desc="Mixed media on canvas.">
-        <img src="356f8fdf-a731-48c9-a6a1-d839e2124058.jpeg" alt="Untitled painting 9" class="piece-art">
-      </button>
-      <button class="piece" data-title="Untitled 10" data-desc="Mixed media on canvas.">
-        <img src="3731a4e0-09f1-435e-8f14-6ed0c2fa82ba.jpeg" alt="Untitled painting 10" class="piece-art">
-      </button>
-      <button class="piece" data-title="Untitled 11" data-desc="Mixed media on canvas.">
-        <img src="440670d8-acb9-47ab-8a5b-1ac6d82aff6f.jpeg" alt="Untitled painting 11" class="piece-art">
-      </button>
-      <button class="piece" data-title="Untitled 12" data-desc="Mixed media on canvas.">
-        <img src="55d92ae3-cd66-4483-a95b-7821ac2f0348.jpeg" alt="Untitled painting 12" class="piece-art">
-      </button>
-      <button class="piece" data-title="Untitled 13" data-desc="Mixed media on canvas.">
-        <img src="7f339a99-e6c1-4b83-8595-da175022e986.jpeg" alt="Untitled painting 13" class="piece-art">
-      </button>
-      <button class="piece" data-title="Untitled 14" data-desc="Mixed media on canvas.">
-        <img src="8617961b-3e0b-4d46-8599-12d281f86067.jpeg" alt="Untitled painting 14" class="piece-art">
-      </button>
-      <button class="piece" data-title="Untitled 15" data-desc="Mixed media on canvas.">
-        <img src="94410495-835a-4693-914a-c835a3f9c1f2.jpeg" alt="Untitled painting 15" class="piece-art">
-      </button>
-      <button class="piece" data-title="Untitled 16" data-desc="Mixed media on canvas.">
-        <img src="9f085e3c-28a5-43f0-8d51-fb18c671d66f.jpeg" alt="Untitled painting 16" class="piece-art">
-      </button>
-      <button class="piece" data-title="Untitled 17" data-desc="Mixed media on canvas.">
-        <img src="a5dca05b-46e1-4d6a-9bb1-b63a62cd8dcd.jpeg" alt="Untitled painting 17" class="piece-art">
-      </button>
-      <button class="piece" data-title="Untitled 18" data-desc="Mixed media on canvas.">
-        <img src="dd551e88-0cc3-430d-b3a5-35bb0e65da48.jpeg" alt="Untitled painting 18" class="piece-art">
-      </button>
-      <button class="piece" data-title="Untitled 19" data-desc="Mixed media on canvas.">
-        <img src="fb7554f2-f804-4704-97d3-ff4222a6ac7f.jpeg" alt="Untitled painting 19" class="piece-art">
-      </button>
+window.addEventListener('scroll', updateTideline, { passive: true });
+updateTideline();
 
-    </div>
-  </div>
-</section>
+// Gallery lightbox
+const lightbox = document.getElementById('lightbox');
+const lightboxArt = document.getElementById('lightboxArt');
+const lightboxTitle = document.getElementById('lightboxTitle');
+const lightboxDesc = document.getElementById('lightboxDesc');
+const enquireBtn = document.getElementById('enquireBtn');
 
-<section class="process" id="process">
-  <div class="wrap process-inner">
-    <div class="process-copy">
-      <p class="eyebrow">Behind the scenes</p>
-      <h2>How the work gets made</h2>
-      <p>[Derek — write a paragraph here about how you make your art and how the textures around you inspire it. For example: what you look for when you're out walking, how a stone wall or cobbled street turns into a crackle effect on canvas, what draws you to a particular surface or pattern.]</p>
-    </div>
-    <div class="process-strip">
-      <img src="IMG_5432.jpeg" alt="Weathered cobblestones and stone wall corner" class="process-shot">
-      <img src="IMG_5433.jpeg" alt="Textured stone floor with natural markings" class="process-shot">
-      <img src="IMG_5434.jpeg" alt="Lichen-covered stone wall" class="process-shot">
-      <img src="IMG_5435.jpeg" alt="Weathered whitewashed stone corner" class="process-shot">
-    </div>
-  </div>
-</section>
+document.querySelectorAll('.piece').forEach(piece => {
+  piece.addEventListener('click', () => {
+    const img = piece.querySelector('.piece-art');
+    const title = piece.dataset.title;
+    lightboxArt.src = img.src;
+    lightboxArt.alt = img.alt;
+    lightboxTitle.textContent = title;
+    lightboxDesc.textContent = piece.dataset.desc;
 
-<section class="reviews" id="reviews">
-  <div class="wrap">
-    <div class="section-head">
-      <p class="eyebrow">What collectors say</p>
-      <h2>Reviews</h2>
-    </div>
-    <div class="reviews-grid">
-      <blockquote class="review">
-        <p>"The colours are even more alive in person. It's the first thing people notice walking into our living room."</p>
-        Sarah M.
-      </blockquote>
-      <blockquote class="review">
-        <p>"Derek talked me through the whole process before I bought. You can tell how much care goes into every piece."</p>
-        James T.
-      </blockquote>
-      <blockquote class="review">
-        <p>"Shipped carefully and arrived exactly as pictured. Already planning my next purchase."</p>
-        Priya K.
-      </blockquote>
-    </div>
-  </div>
-</section>
+    const subject = encodeURIComponent(`Enquiry — ${title}`);
+    const body = encodeURIComponent(`Hi Derek,\n\nI'm interested in "${title}" (£500). Could you tell me more?\n\nThanks,`);
+    enquireBtn.href = `mailto:abstractartbythesea@gmail.com?subject=${subject}&body=${body}`;
 
-<section class="contact" id="contact">
-  <div class="wrap contact-inner">
-    <p class="eyebrow">Contact</p>
-    <h2>Commissions &amp; inquiries</h2>
-    <p>Interested in a piece, a commission, or a studio visit? Get in touch for more info.</p>
-    <a class="btn btn-line" href="mailto:abstractartbythesea@gmail.com">abstractartbythesea@gmail.com</a>
-  </div>
-</section>
+    lightbox.classList.add('open');
+    lightbox.setAttribute('aria-hidden', 'false');
+  });
+});
 
-<footer class="site-footer">
-  <div class="wrap footer-inner">
-    <span>&copy; <span id="year"></span> Abstract Art by the Sea</span>
-    <div class="footer-links">
-      <a href="#top">Back to top</a>
-    </div>
-  </div>
-</footer>
+lightbox.querySelectorAll('[data-close]').forEach(el => {
+  el.addEventListener('click', () => {
+    lightbox.classList.remove('open');
+    lightbox.setAttribute('aria-hidden', 'true');
+  });
+});
 
-<div class="lightbox" id="lightbox" aria-hidden="true">
-  <div class="lightbox-backdrop" data-close></div>
-  <div class="lightbox-panel">
-    <button class="lightbox-close" data-close aria-label="Close">&times;</button>
-    <img class="lightbox-art" id="lightboxArt" src="" alt="">
-    <div class="lightbox-info">
-      <h3 id="lightboxTitle"></h3>
-      <p class="piece-price">£500.00</p>
-      <p id="lightboxDesc"></p>
-      <a href="#" class="btn btn-underline" id="enquireBtn">Enquire about this piece</a>
-    </div>
-  </div>
-</div>
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    lightbox.classList.remove('open');
+    lightbox.setAttribute('aria-hidden', 'true');
+  }
+});
 
-<script src="script.js"></script>
-</body>
-</html>
