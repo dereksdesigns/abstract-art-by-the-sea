@@ -361,23 +361,26 @@ h1, h2 {
 
 .process-inner {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 40px;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 72px;
+  align-items: center;
 }
 
 .process-copy h2 { font-size: 38px; margin-bottom: 20px; }
-.process-copy p { color: var(--ink-soft); font-size: 16.5px; max-width: 620px; margin: 0; }
+.process-copy p { color: var(--ink-soft); font-size: 16.5px; max-width: 480px; margin: 0; }
 
 .process-strip {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  max-width: 420px;
+  margin-left: auto;
 }
 
 .process-shot {
   display: block;
   width: 100%;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 1 / 1;
   object-fit: cover;
   border-radius: 2px;
 }
@@ -443,7 +446,8 @@ h1, h2 {
 @media (max-width: 860px) {
   .about-inner { grid-template-columns: 1fr; gap: 40px; }
   .gallery-grid { grid-template-columns: repeat(3, 1fr); }
-  .process-strip { grid-template-columns: repeat(2, 1fr); }
+  .process-inner { grid-template-columns: 1fr; gap: 40px; }
+  .process-strip { max-width: 480px; margin: 0; }
   .reviews-grid { grid-template-columns: 1fr; }
 }
 
@@ -457,6 +461,5 @@ h1, h2 {
   .hero h1 { font-size: 44px; }
   .about, .gallery, .process, .reviews, .contact { padding: 64px 0; }
   .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
-  .process-strip { grid-template-columns: 1fr 1fr; gap: 10px; }
   .blob-a, .blob-b, .blob-c { opacity: 0.25; }
 }
