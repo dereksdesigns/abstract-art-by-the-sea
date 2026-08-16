@@ -370,19 +370,17 @@ h1, h2 {
 
 .process-strip {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 16px;
 }
 
 .process-shot {
+  display: block;
+  width: 100%;
   aspect-ratio: 4 / 5;
+  object-fit: cover;
   border-radius: 2px;
-  background-size: cover;
 }
-
-.process-shot-1 { background: linear-gradient(150deg, var(--sea) 0%, var(--paper-2) 60%, var(--horizon) 100%); }
-.process-shot-2 { background: linear-gradient(190deg, var(--clay) 0%, var(--paper-2) 55%, var(--sea) 110%); }
-.process-shot-3 { background: linear-gradient(160deg, var(--horizon) 0%, var(--sea-deep) 60%, var(--paper-2) 120%); }
 
 /* ---------- Reviews ---------- */
 .reviews { padding: 100px 0; border-top: 1px solid var(--line); }
