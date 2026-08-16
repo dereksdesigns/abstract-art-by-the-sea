@@ -35,14 +35,21 @@ const lightbox = document.getElementById('lightbox');
 const lightboxArt = document.getElementById('lightboxArt');
 const lightboxTitle = document.getElementById('lightboxTitle');
 const lightboxDesc = document.getElementById('lightboxDesc');
+const enquireBtn = document.getElementById('enquireBtn');
 
 document.querySelectorAll('.piece').forEach(piece => {
   piece.addEventListener('click', () => {
     const img = piece.querySelector('.piece-art');
+    const title = piece.dataset.title;
     lightboxArt.src = img.src;
     lightboxArt.alt = img.alt;
-    lightboxTitle.textContent = piece.dataset.title;
+    lightboxTitle.textContent = title;
     lightboxDesc.textContent = piece.dataset.desc;
+
+    const subject = encodeURIComponent(`Enquiry — ${title}`);
+    const body = encodeURIComponent(`Hi Derek,\n\nI'm interested in "${title}" (£500). Could you tell me more?\n\nThanks,`);
+    enquireBtn.href = `mailto:abstractartbythesea@gmail.com?subject=${subject}&body=${body}`;
+
     lightbox.classList.add('open');
     lightbox.setAttribute('aria-hidden', 'false');
   });
