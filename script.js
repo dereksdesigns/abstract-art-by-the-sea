@@ -30,3 +30,34 @@ function updateTideline() {
 window.addEventListener('scroll', updateTideline, { passive: true });
 updateTideline();
 
+// Gallery lightbox
+const lightbox = document.getElementById('lightbox');
+const lightboxArt = document.getElementById('lightboxArt');
+const lightboxTitle = document.getElementById('lightboxTitle');
+const lightboxDesc = document.getElementById('lightboxDesc');
+
+document.querySelectorAll('.piece').forEach(piece => {
+  piece.addEventListener('click', () => {
+    const img = piece.querySelector('.piece-art');
+    lightboxArt.src = img.src;
+    lightboxArt.alt = img.alt;
+    lightboxTitle.textContent = piece.dataset.title;
+    lightboxDesc.textContent = piece.dataset.desc;
+    lightbox.classList.add('open');
+    lightbox.setAttribute('aria-hidden', 'false');
+  });
+});
+
+lightbox.querySelectorAll('[data-close]').forEach(el => {
+  el.addEventListener('click', () => {
+    lightbox.classList.remove('open');
+    lightbox.setAttribute('aria-hidden', 'true');
+  });
+});
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    lightbox.classList.remove('open');
+    lightbox.setAttribute('aria-hidden', 'true');
+  }
+});
